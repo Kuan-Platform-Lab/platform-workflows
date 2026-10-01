@@ -137,5 +137,5 @@ jobs:
           git config user.email ci-bot@users.noreply.github.com
           if git diff --quiet; then echo "không có thay đổi"; exit 0; fi
           git commit -am "chore(${{ inputs.service }}): deploy ${{ needs.image.outputs.tag }} to dev"
-          for i in 1 2 3; do git push && exit 0; git pull --rebase; done
+          for _ in 1 2 3; do git push && exit 0; git pull --rebase; done
           exit 1
